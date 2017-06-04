@@ -1,0 +1,89 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int a[10],b[10],c[20],i,j,max1,max2,min1,min2,n,m=0;
+	for(i=0;i<10;i++)
+	{
+		cin>>a[i];
+	 } 
+	 	for(i=0;i<10;i++)
+	{
+		cin>>b[i];
+	 } 
+	 max1=min1=a[0];max2=min2=b[0];
+	 for(i=0;i<10;i++)
+	 {
+	 	if(a[i]>=max1)
+	 	max1=a[i];
+	 	if(a[i]<=min1)
+	 	min1=a[i];
+	 }
+	 for(i=0;i<10;i++)
+	 {
+	 	if(b[i]>=max2)
+	 	max2=b[i];
+	 	if(b[i]<=min2)
+	 	min2=b[i];
+	 }
+	 int temp;
+	 for(i=0;i<10;i++)
+	 {
+	 	for(j=i+1;j<10;j++)
+	 	if(a[i]>a[j])
+	 	{
+	 		temp=a[i];
+	 		a[i]=a[j];
+	 		a[j]=temp;
+		 }
+	 }
+	 for(i=0;i<10;i++)
+	 {
+	 	for(j=i+1;j<10;j++)
+	 	if(b[i]>b[j])
+	 	{
+	 		temp=b[i];
+	 		b[i]=b[j];
+	 		b[j]=temp;
+		 }
+	 }
+	 j=0;
+	 for(i=0;i<10;i++)
+	 {
+	 	c[j]=a[i];
+	 	j++;
+	 }
+	 for(i=0;i<10;i++)
+	 {
+	 	c[j]=b[i];
+	 	j++;
+	 }
+	 temp=0;
+	 for(i=0;i<20;i++)
+	 {
+	 	for(j=i+1;j<20;j++)
+	 	if(c[i]>c[j])
+	 	{
+	 		temp=c[i];
+	 		c[i]=c[j];
+	 		c[j]=temp;
+		 }
+	 }
+	 for(i=0;i<20-m;i++)
+	 { 
+	 	for(j=0;j<i;j++)
+	 	{
+	 		if(c[i]==c[j])
+	 		{
+	 			for(n=j;n<20;n++)
+	 			c[n]=c[n+1];
+	 			m++;
+			}
+		}
+	  }
+	 cout<<max1<<" "<<min1<<endl;
+	 cout<<max2<<" "<<min2<<endl;
+	 for(i=0;i<20-m;i++)
+	 cout<<c[i]<<" ";
+	return 0;
+ } 
